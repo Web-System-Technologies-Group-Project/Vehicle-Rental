@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - Vehicle Rentals</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background: #ffffff;
+        color: #000000;
+      }
+
+      /* Navbar */
+      .navbar {
+        width: 100%;
+        background: #ffffff;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .navbar-header {
+        max-width: 1312px;
+        margin: 0 auto;
+        padding: 16px 64px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #000000;
+        font-size: 16px;
+      }
+
+      .nav-actions {
+        display: flex;
+        gap: 16px;
+      }
+
+      .btn {
+        padding: 8px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: 1px solid #000000;
+        background: transparent;
+        transition: all 0.3s;
+      }
+
+      .btn-primary {
+        background: #000000;
+        color: #ffffff;
+      }
+
+      .btn-primary:hover {
+        background: #333;
+      }
+
+      .btn:hover {
+        opacity: 0.8;
+      }
+
+      /* Header Section */
+      .header-section {
+        padding: 112px 64px;
+        text-align: center;
+        background: #ffffff;
+      }
+
+      .header-container {
+        max-width: 768px;
+        margin: 0 auto;
+      }
+
+      .tagline {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        font-size: 56px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 24px;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 32px;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      .btn-large {
+        padding: 12px 24px;
+        font-size: 16px;
+      }
+
+      /* Form Section */
+      .form-section {
+        padding: 112px 64px;
+        background: #ffffff;
+      }
+
+      .form-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        gap: 80px;
+      }
+
+      .form-info {
+        flex: 1;
+      }
+
+      .section-title {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+
+      h2 {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 24px;
+      }
+
+      .contact-info {
+        margin-top: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .contact-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .contact-row a {
+        text-decoration: underline;
+        color: #000000;
+      }
+
+      /* Form */
+      .signup-form {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 24px;
+      }
+
+      .form-group {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .form-group.full-width {
+        width: 100%;
+      }
+
+      label {
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      input,
+      select,
+      textarea {
+        padding: 12px;
+        font-size: 16px;
+        font-family: "Roboto", sans-serif;
+        border: 1px solid #000000;
+        background: #ffffff;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: rgba(0, 0, 0, 0.6);
+      }
+
+      textarea {
+        min-height: 180px;
+        resize: vertical;
+      }
+
+      .radio-group {
+        padding: 16px 0;
+      }
+
+      .radio-options {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 12px;
+      }
+
+      .radio-row {
+        display: flex;
+        gap: 24px;
+      }
+
+      .radio-option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+      }
+
+      .radio-option input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-bottom: 16px;
+      }
+
+      .checkbox-group input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+
+      /* CTA Sections */
+      .cta-section {
+        padding: 112px 64px;
+        background: #ffffff;
+      }
+
+      .cta-container {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .cta-card {
+        border: 1px solid #000000;
+        padding: 64px;
+        text-align: center;
+      }
+
+      .cta-content {
+        max-width: 768px;
+        margin: 0 auto;
+      }
+
+      .cta-actions {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 32px;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 80px 64px;
+        background: #ffffff;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      .footer-container {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .footer-content {
+        display: flex;
+        gap: 128px;
+        margin-bottom: 80px;
+      }
+
+      .footer-newsletter {
+        flex: 1;
+      }
+
+      .newsletter-form {
+        display: flex;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 40px;
+        flex: 1;
+      }
+
+      .footer-column {
+        flex: 1;
+      }
+
+      .footer-column h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column li {
+        padding: 8px 0;
+      }
+
+      .footer-column a {
+        text-decoration: none;
+        color: #000000;
+        font-size: 14px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 0;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #000000;
+        padding-top: 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-legal {
+        display: flex;
+        gap: 24px;
+      }
+
+      .footer-legal a {
+        text-decoration: underline;
+        color: #000000;
+        font-size: 14px;
+      }
+
+      .disclaimer {
+        font-size: 12px;
+        margin-top: 12px;
+      }
+
+      @media (max-width: 768px) {
+        .form-container,
+        .footer-content {
+          flex-direction: column;
+        }
+
+        .form-row {
+          flex-direction: column;
+        }
+
+        h1 {
+          font-size: 36px;
+        }
+
+        h2 {
+          font-size: 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-header">
+        <div class="logo">VEHICLE RENTALS</div>
+        <div class="nav-links">
+          <a href="#vehicles">vehicles</a>
+          <a href="#rent">rent</a>
+          <a href="#locations">locations</a>
+          <a href="#more">more ▾</a>
+        </div>
+        <div class="nav-actions">
+          <button class="btn">login</button>
+          <button class="btn btn-primary">signup</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="header-section">
+      <div class="header-container">
+        <div class="tagline">Join</div>
+        <h1>Create your account</h1>
+        <p class="subtitle">
+          Start your journey with easy vehicle rentals in just a few simple
+          steps.
+        </p>
+        <div class="header-actions">
+          <button class="btn btn-primary btn-large">Sign up</button>
+          <button class="btn btn-large">Learn more</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Form Section -->
+    <section class="form-section">
+      <div class="form-container">
+        <div class="form-info">
+          <div class="section-title">Welcome</div>
+          <h2>Personal details</h2>
+          <p class="subtitle">
+            Fill out the form below to create your rental account quickly.
+          </p>
+
+          <div class="contact-info">
+            <div class="contact-row">
+              <span>📧</span>
+              <a href="mailto:your.email@example.com">your.email@example.com</a>
+            </div>
+            <div class="contact-row">
+              <span>📞</span>
+              <a href="tel:+15551234567">+1 (555) 123-4567</a>
+            </div>
+            <div class="contact-row">
+              <span>📍</span>
+              <span>123 Vehicle Street, Sydney NSW 2000, Australia</span>
+            </div>
+          </div>
+        </div>
+
+        <form class="signup-form" id="signupForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First name</label>
+              <input
+                type="text"
+                id="firstName"
+                placeholder="Placeholder"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last name</label>
+              <input
+                type="text"
+                id="lastName"
+                placeholder="Placeholder"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="your.email@example.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone number</label>
+              <input
+                type="tel"
+                id="phone"
+                placeholder="+1 (555) 123-4567"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="interest">Select your interest</label>
+            <select id="interest" required>
+              <option value="">Choose option</option>
+              <option value="personal">Personal use</option>
+              <option value="business">Business use</option>
+              <option value="tourism">Tourism</option>
+            </select>
+          </div>
+
+          <div class="radio-group full-width">
+            <label>How did you hear about us?</label>
+            <div class="radio-options">
+              <div class="radio-row">
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="search"
+                    name="source"
+                    value="search"
+                  />
+                  <label for="search">Online search</label>
+                </div>
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="social"
+                    name="source"
+                    value="social"
+                  />
+                  <label for="social">Social media</label>
+                </div>
+              </div>
+              <div class="radio-row">
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="referral"
+                    name="source"
+                    value="referral"
+                  />
+                  <label for="referral">Friend referral</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="ad" name="source" value="ad" />
+                  <label for="ad">Advertisement</label>
+                </div>
+              </div>
+              <div class="radio-row">
+                <div class="radio-option">
+                  <input type="radio" id="event" name="source" value="event" />
+                  <label for="event">Event</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="other" name="source" value="other" />
+                  <label for="other">Other</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              placeholder="Write your comments here"
+            ></textarea>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="terms" required />
+            <label for="terms">I agree to terms and conditions</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-large">
+            Submit
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- CTA Section 1 -->
+    <section class="cta-section">
+      <div class="cta-container">
+        <div class="cta-card">
+          <div class="cta-content">
+            <h2>Already a member?</h2>
+            <p class="subtitle">
+              Log in to access your existing rental account and manage your
+              bookings.
+            </p>
+            <div class="cta-actions">
+              <button class="btn btn-primary btn-large">Sign in</button>
+              <button class="btn btn-large">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section 2 -->
+    <section class="cta-section">
+      <div class="cta-container">
+        <div class="cta-card">
+          <div class="cta-content">
+            <h2>Forgot your password?</h2>
+            <p class="subtitle">
+              No problem. We'll help you reset and regain access to your
+              account.
+            </p>
+            <div class="cta-actions">
+              <button class="btn btn-primary btn-large">Reset</button>
+              <button class="btn btn-large">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section 3 -->
+    <section class="cta-section">
+      <div class="cta-container">
+        <div class="cta-card">
+          <div class="cta-content">
+            <h2>Quick signup options</h2>
+            <p class="subtitle">
+              Connect instantly using your preferred social media account for
+              faster registration.
+            </p>
+            <div class="cta-actions">
+              <button class="btn btn-primary btn-large">Google</button>
+              <button class="btn btn-large">Facebook</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-newsletter">
+            <div class="logo">VEHICLE RENTALS</div>
+            <p style="margin: 24px 0">
+              Stay updated with the latest vehicle rentals and travel tips
+            </p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="email" required />
+              <button type="submit" class="btn btn-large">subscribe</button>
+            </form>
+            <p class="disclaimer">
+              By subscribing, you agree to receive updates and promotional
+              offers.
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <div class="footer-column">
+              <h3>quick links</h3>
+              <ul>
+                <li><a href="#vehicles">vehicles</a></li>
+                <li><a href="#locations">locations</a></li>
+                <li><a href="#rates">rates</a></li>
+                <li><a href="#specials">specials</a></li>
+                <li><a href="#faq">faq</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h3>company</h3>
+              <ul>
+                <li><a href="#about">about us</a></li>
+                <li><a href="#contact">contact</a></li>
+                <li><a href="#careers">careers</a></li>
+                <li><a href="#blog">blog</a></li>
+                <li><a href="#support">support</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h3>connect</h3>
+              <ul class="social-links">
+                <li><a href="#facebook">📘 facebook</a></li>
+                <li><a href="#instagram">📷 instagram</a></li>
+                <li><a href="#twitter">🐦 x</a></li>
+                <li><a href="#linkedin">💼 linkedin</a></li>
+                <li><a href="#youtube">▶️ youtube</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2024 vehicle rentals. all rights reserved.</p>
+          <div class="footer-legal">
+            <a href="#privacy">privacy policy</a>
+            <a href="#terms">terms of service</a>
+            <a href="#cookies">cookie settings</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Form submission handler
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const formData = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            interest: document.getElementById("interest").value,
+            source: document.querySelector('input[name="source"]:checked')
+              ?.value,
+            message: document.getElementById("message").value,
+            terms: document.getElementById("terms").checked,
+          };
+
+          console.log("Form submitted:", formData);
+          alert("Thank you for signing up! Your account has been created.");
+          this.reset();
+        });
+
+      // Newsletter form handler
+      document
+        .querySelector(".newsletter-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Thank you for subscribing!");
+          this.reset();
+        });
+    </script>
+  </body>
+</html>
